@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>财合税</title>
+</head>
+<body>
+<script>
+function getQueryString(name) {
+      var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)", "i");
+      var reg_rewrite = new RegExp("(^|/)" + name + "/([^/]*)(/|$)", "i");
+      var r = window.location.search.substr(1).match(reg);
+      var q = window.location.pathname.substr(1).match(reg_rewrite);
+      if(r != null){
+        return unescape(r[2]);
+      }else if(q != null){
+        return unescape(q[2]);
+      }else{
+        return '';
+      }
+  }
+  var url = getQueryString('path')?getQueryString('path'):'';
+  var newtime = new Date().getTime();
+  var rurl=''
+  if(url){
+    rurl = './index.html#/'+url+'?vs='+newtime;
+  }else{
+    rurl = './index.html?vs='+newtime;
+  }
+  window.location.replace(rurl);
+</script>
+
+
+</body>
+</html>
